@@ -1,16 +1,15 @@
 <?php
-require('dbconfig.php') ?>
-
+require('dbconfig.php'); ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>workshop || Instructor</title>
+	<title>Workshop || Instructor</title>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-</head>
 
-	
-	<?php
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"-->
+
+<?php
 		if(!empty($_GET['meg'])){
 			echo $_GET['meg'];
 		}
@@ -20,8 +19,8 @@ require('dbconfig.php') ?>
 
 <body>
 <div class="container">
-	<h2>ALL Student Data</h2>
-	<a class="btn btn-success" href="form.php"> Add New Data </a>
+	<h2>Edit Student Data</h2>
+	
 
 	<table class="table">
 		<thead>
@@ -42,6 +41,8 @@ require('dbconfig.php') ?>
 
 	$sql="SELECT *FROM info";
 	$result=$conn->query($sql);
+	$i=1;
+	$count = mysqli_num_rows($result);
 
 	if($result-> num_rows >0){
 
@@ -51,8 +52,16 @@ require('dbconfig.php') ?>
 				<td>' .$row["email"].'</tb>
 				<td>' .$row["dept"].'</tb>
 				<td>' .$row["reg"].'</tb>
-
+				<td>' .$row["id"].'</tb>
 				</tr>';
+				echo '<td>';
+   				
+       			echo '<a href="editformpage.php?id='.$row['id'].'">EDIT</a>';
+   				
+   				echo '</td>';
+   				echo '</tr>';
+   				$i++;
+
 				
 		}
 
@@ -64,7 +73,8 @@ require('dbconfig.php') ?>
 ?>
 </tbody>
 </table>
-<a class="btn" href="editdata.php"> Edit Data </a>
+	
+
 </body>
 </html>
 

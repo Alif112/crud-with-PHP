@@ -1,4 +1,5 @@
-
+<?php 
+	require('dbconfig.php');
 
 <!DOCTYPE html>
 <html>
@@ -66,3 +67,5 @@
 </form>
 </body>
 </html>
+
+?>
